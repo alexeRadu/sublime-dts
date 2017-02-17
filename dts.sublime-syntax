@@ -39,4 +39,8 @@ contexts:
     # followed by a '{'
     - match: '([0-9a-zA-Z_-]+)[\s]*\{'
       captures:
-        1: entity.name.type.node.dts
+        1: keyword.other.node.dts
+
+    - match: '([0-9]+)'
+      captures:
+        1: constant.numeric.integer.dts
