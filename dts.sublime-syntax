@@ -3,7 +3,11 @@
 # See http://www.sublimetext.com/docs/3/syntax.html
 
 name: Device Tree (dts)
-file_extensions: dts
+
+file_extensions:
+  - dts
+  - dtsi
+
 scope: text.dts
 
 contexts:
