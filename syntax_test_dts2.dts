@@ -1,0 +1,79 @@
+// SYNTAX TEST "Packages/User/sublime-dts/dts.sublime-syntax"
+
+/dts-v1/;
+
+/ {
+	compatible = "acme,coyotes-revenge";
+	#address-cells = <1>;
+	#size-cells = <1>;
+
+	cpus {
+		#address-cells = <1>;
+		#size-cells = <0>;
+		cpu@0 {
+			compatible = "arm,cortex-a9";
+			reg = <0>;
+		};
+		cpu@1 {
+			compatible = "arm,cortex-a9";
+			reg = <1>;
+		};
+	};
+
+	serial@101F0000 {
+		compatible = "arm,pl011";
+		reg = <0x101f0000 0x1000>;
+	};
+
+	serial@101F2000 {
+		compatible = "arm,pl011";
+		reg = <0x101f2000 0x1000>;
+	};
+
+	gpio@101F3000 {
+		compatible = "arm,pl061";
+		reg = <0x101f3000 0x1000 0x101f4000 0x0010>;
+	};
+
+	interrupt-controller@10140000 {
+		compatible = "arm,pl190";
+		reg = <0x10140000 0x1000>;
+	};
+
+	spi@10115000 {
+		compatible = "arm,pl022";
+		reg = <0x10115000 0x1000>;
+	};
+
+	external-bus {
+		#address-cells = <2>;
+		#size-cells = <1>;
+		ranges = <0 0 0x10100000 0x10000	// Chipselect 1, Ethernet
+			  1 0 0x10160000 0x10000 	// Chipselect 2, i2c controller
+			  2 0 0x30000000 0x1000000>;	// Chipselect 3, NOR Flash
+
+		ethernet@0,0 {
+			compatible = "acme,a1234-i2c-bus";
+			reg = <0 0 0x1000>;
+			rtc@58 {
+				compatible = "maxim,ds1338";
+			};
+
+			i2c@1,0 {
+				compatible = "acme,a1234-i2c-bus";
+				#address-cells = <1>;
+				#size-cells = <0>;
+				reg = <1 0 0x1000>;
+				rtc@58 {
+					compatible = "maxim,ds1338";
+					reg = <58>;
+				};
+			};
+
+			flash@2,0 {
+				compatible = "samsung,k8f1315ebm", "cfi-flash";
+				reg = <2 0 0x4000000>;
+			};
+		};
+	};
+};
