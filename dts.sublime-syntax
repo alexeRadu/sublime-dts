@@ -1,0 +1,20 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/3/syntax.html
+
+name: Device Tree (dts)
+file_extensions: dts
+scope: text.dts
+
+contexts:
+  main:
+
+    # Comments begin with a '//' and finish at the end of the line
+    - match: '//'
+      scope: comment.line.dts
+      push: line_comment
+
+  line_comment:
+    - meta_scope: comment.line.dts
+    - match: $
+      pop: true
