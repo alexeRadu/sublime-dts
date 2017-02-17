@@ -37,9 +37,10 @@ contexts:
     # Nodes start on a newline, contain in their name letters, numbers and some 
     # other characters ('-', '_'); they are followed by 0 or more whitespaces 
     # followed by a '{'
-    - match: '([/0-9a-zA-Z_-]+)[\s]*\{'
+    - match: '([/0-9a-zA-Z_-]+)(([@]?)([0-9]+)*)[\s]*\{'
       captures:
         1: keyword.other.node.dts
+        4: constant.numeric.integer.dts
 
     - match: '([0-9]+)'
       captures:
