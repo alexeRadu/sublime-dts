@@ -42,6 +42,8 @@ contexts:
         1: keyword.other.node.dts
         4: constant.numeric.integer.dts
 
-    - match: '([0-9]+)'
-      captures:
-        1: constant.numeric.integer.dts
+    - match: '0x[0-9a-f]+'
+      scope: constant.numeric.integer.dts
+
+    - match: '[0-9]+'
+      scope: constant.numeric.integer.dts
