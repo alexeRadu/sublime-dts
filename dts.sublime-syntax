@@ -11,10 +11,7 @@ contexts:
 
     # Comments begin with a '//' and finish at the end of the line
     - match: '//'
-      scope: comment.line.dts
-      push: line_comment
-
-  line_comment:
-    - meta_scope: comment.line.dts
-    - match: $
-      pop: true
+      push:
+        - meta_scope: comment.line.dts
+        - match: $
+          pop: true
