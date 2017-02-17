@@ -33,3 +33,10 @@ contexts:
         - meta_scope: string.quoted.double.dts
         - match: $
           pop: true
+
+    # Nodes start on a newline, contain in their name letters, numbers and some 
+    # other characters ('-', '_'); they are followed by 0 or more whitespaces 
+    # followed by a '{'
+    - match: '([0-9a-zA-Z_-]+)[\s]*\{'
+      captures:
+        1: entity.name.type.node.dts
