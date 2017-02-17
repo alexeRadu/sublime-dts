@@ -15,3 +15,10 @@ contexts:
         - meta_scope: comment.line.dts
         - match: $
           pop: true
+
+    # Strings start and end with double-quotes
+    - match: '"'
+      push:
+        - meta_scope: string.quoted.double.dts
+        - match: $
+          pop: true
