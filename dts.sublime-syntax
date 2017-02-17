@@ -9,11 +9,18 @@ scope: text.dts
 contexts:
   main:
 
-    # Comments begin with a '//' and finish at the end of the line
+    # Line comments begin with a '//' and finish at the end of the line
     - match: '//'
       push:
         - meta_scope: comment.line.dts
         - match: $
+          pop: true
+
+    # Block comments begin with '/*' and and with '*/'
+    - match: '/\*'
+      push:
+        - meta_scope: comment.block.dts
+        - match: '\*/'
           pop: true
 
     # Strings start and end with double-quotes
