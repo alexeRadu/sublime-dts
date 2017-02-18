@@ -63,6 +63,7 @@
 			compatible = "acme,a1234-i2c-bus";
 			reg = <0 0 0x1000>;
 			interrupts = <5 2>;
+		};
 
 		i2c@1,0 {
 			compatible = "acme,a1234-i2c-bus";
@@ -78,10 +79,9 @@
 			};
 		};
 
-			flash@2,0 {
-				compatible = "samsung,k8f1315ebm", "cfi-flash";
-				reg = <2 0 0x4000000>;
-			};
+		flash@2,0 {
+			compatible = "samsung,k8f1315ebm", "cfi-flash";
+			reg = <2 0 0x4000000>;
 		};
 	};
 };
